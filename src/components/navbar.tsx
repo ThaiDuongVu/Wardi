@@ -1,5 +1,6 @@
 import "../styles/global.css";
 import Link from "next/link";
+import Settings from "./settings";
 
 const NavBar = ({ activePage }: { activePage: string }) => {
   return (
@@ -8,7 +9,7 @@ const NavBar = ({ activePage }: { activePage: string }) => {
         <div className="container-fluid">
           {/* Brand */}
           <a className="navbar-brand" href="/" aria-label="brand">
-          <img src="/icon.png" alt="icon" className="img-fluid rounded navbar-icon" />
+            <img src="/icon.png" alt="icon" className="img-fluid rounded navbar-icon" />
           </a>
 
           {/* Button for mobile interface */}
@@ -35,7 +36,7 @@ const NavBar = ({ activePage }: { activePage: string }) => {
             </div>
             {/* End content */}
             <div className="navbar-nav me-end">
-              <button className="nav-link" type="button" aria-label="Settings">
+              <button className="nav-link" type="button" aria-label="Settings" data-bs-toggle="modal" data-bs-target="#settingsModal">
                 <i className="bi bi-gear-fill"></i>
               </button>
               <button className="nav-link" type="button" aria-label="Profile">
@@ -45,6 +46,7 @@ const NavBar = ({ activePage }: { activePage: string }) => {
           </div>
         </div>
       </nav>
+      <Settings />
     </div>
   )
 };
