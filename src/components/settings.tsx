@@ -32,7 +32,9 @@ const Settings = () => {
             Changes applied on <a href="">reload</a>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+              Close <i className="bi bi-x-circle-fill"></i>
+            </button>
           </div>
         </div>
       </div>

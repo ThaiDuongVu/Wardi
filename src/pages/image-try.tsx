@@ -65,7 +65,7 @@ const ImageTry = () => {
           },
         },
         {
-          text: "Show this person wearing this outfit",
+          text: "Show this person wearing this item",
         }
       ],
       config: {
