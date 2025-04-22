@@ -1,4 +1,4 @@
-import "../styles/global.css";
+import "@/styles/global.css";
 import Link from "next/link";
 import Settings from "./settings";
 
@@ -22,16 +22,19 @@ const NavBar = ({ activePage }: { activePage: string }) => {
             {/* Start content */}
             <div className="navbar-nav me-auto">
               <Link className={`nav-link ${activePage == "home" ? "active" : ""}`} href="/">
-                Home <i className="bi bi-house-fill m-1"></i>
+                Home <i className="bi bi-house-fill"></i>
               </Link>
               <Link className={`nav-link ${activePage == "text-try" ? "active" : ""}`} href="/text-try">
-                Text-Try <i className="bi bi-search-heart-fill m-1"></i>
+                Text-Try <i className="bi bi-search-heart-fill"></i>
               </Link>
               <Link className={`nav-link ${activePage == "image-try" ? "active" : ""}`} href="/image-try">
-                Image-Try <i className="bi bi-search-heart-fill m-1"></i>
+                Image-Try <i className="bi bi-search-heart-fill"></i>
               </Link>
               <Link className={`nav-link ${activePage == "market" ? "active" : ""}`} href="/market">
-                Market <i className="bi bi-bag-heart-fill m-1"></i>
+                Market <i className="bi bi-bag-heart-fill"></i>
+              </Link>
+              <Link className={`nav-link ${activePage == "wardrobe" ? "active" : ""}`} href="/wardrobe">
+                My Wardrobe <i className="bi bi-person-standing-dress"></i>
               </Link>
             </div>
             {/* End content */}

@@ -1,8 +1,8 @@
 import NavBar from "@/components/navbar";
 import { FormEvent, useState } from "react";
-import RootLayout from "./layout";
+import RootLayout from "@/components/layout";
 import { GoogleGenAI, Modality } from "@google/genai";
-import "../styles/global.css";
+import "@/styles/global.css";
 
 const TextTry = () => {
   const ai = new GoogleGenAI({ apiKey: process.env.apiKey });

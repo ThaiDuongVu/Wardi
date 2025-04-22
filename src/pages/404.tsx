@@ -1,5 +1,5 @@
 import NavBar from "@/components/navbar";
-import RootLayout from "./layout";
+import RootLayout from "@/components/layout";
 
 const Custom404 = () => {
   return (

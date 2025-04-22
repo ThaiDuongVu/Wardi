@@ -1,6 +1,6 @@
 "use client";
 
-import "../styles/bootstrap-zephyr.css";
+import "@/styles/bootstrap-zephyr.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Head from "next/head";
 import Footer from "@/components/footer";

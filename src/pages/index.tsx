@@ -2,7 +2,7 @@
 
 import NavBar from "@/components/navbar";
 import Header from "@/components/header";
-import RootLayout from "./layout";
+import RootLayout from "@/components/layout";
 
 const Home = () => {
   return (

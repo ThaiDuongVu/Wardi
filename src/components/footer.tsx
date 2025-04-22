@@ -3,7 +3,7 @@ const Footer = () => {
   const linkedinURL = "https://www.linkedin.com/in/duong-vu-290901/";
 
   return (
-    <div className="bg-body-tertiary">
+    <footer className="footer bg-body-tertiary">
       <br />
       <div className="container">
         <div className="row">
@@ -19,8 +19,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-    </div>
+    </footer>
   )
 };
 
