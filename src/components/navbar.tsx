@@ -30,9 +30,6 @@ const NavBar = ({ activePage }: { activePage: string }) => {
               <Link className={`nav-link ${activePage == "image-try" ? "active" : ""}`} href="/image-try">
                 Image-Try <i className="bi bi-search-heart-fill"></i>
               </Link>
-              <Link className={`nav-link ${activePage == "market" ? "active" : ""}`} href="/market">
-                Market <i className="bi bi-bag-heart-fill"></i>
-              </Link>
               <Link className={`nav-link ${activePage == "wardrobe" ? "active" : ""}`} href="/wardrobe">
                 My Wardrobe <i className="bi bi-person-standing-dress"></i>
               </Link>
@@ -42,7 +39,7 @@ const NavBar = ({ activePage }: { activePage: string }) => {
               <button className="nav-link" type="button" aria-label="Settings" data-bs-toggle="modal" data-bs-target="#settingsModal">
                 <i className="bi bi-gear-fill"></i>
               </button>
-              <button className="nav-link" type="button" aria-label="Profile">
+              <button className={`nav-link ${activePage == "profile" ? "active" : ""}`} type="button" aria-label="Profile" onClick={() => location.href = "/profile"}>
                 <i className="bi bi-person-circle"></i>
               </button>
             </div>

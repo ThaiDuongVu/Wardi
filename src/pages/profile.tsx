@@ -1,19 +1,20 @@
-import RootLayout from "@/components/layout";
 import NavBar from "@/components/navbar";
+import RootLayout from "@/components/layout";
 import "@/styles/global.css";
 
-const Market = () => {
+const Profile = () => {
   return (
     <RootLayout>
-      <NavBar activePage="market" />
+      <NavBar activePage="profile" />
       <br />
       <div className="container root-content">
         <div className="row">
-          <h4 className="text-center">Market</h4>
+          <h4 className="text-center">Profile</h4>
+          <div className="col"></div>
         </div>
       </div>
     </RootLayout>
   )
 };
 
-export default Market;
+export default Profile;

@@ -1,5 +1,3 @@
 Model name: gemini-2.0-flash-exp-image-generation
 Gemini API Key: AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU
-Documentation: https://nextjs.org/docs
-Theme:  https://bootswatch.com/lumen/
-        https://bootswatch.com/zephyr/
+Theme: https://bootswatch.com/zephyr/
