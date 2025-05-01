@@ -20,6 +20,7 @@ const TextTry = () => {
     }
   };
   // Output image
+  const [outputImageData, setOutputImageData] = useState("");
   const [outputImageURL, setOutputImageURL] = useState("https://placehold.co/256?text=Output+image");
 
   const submit = async (event: FormEvent) => {
@@ -64,9 +65,18 @@ const TextTry = () => {
         console.log(part.text);
       } else if (part.inlineData) {
         const data = Buffer.from(part.inlineData.data ?? "", "base64").toString("base64");
+        setOutputImageData(data);
         setOutputImageURL(`data:image/jpeg;base64,${data}`);
       }
     }
+  };
+
+  const addToWardrobe = () => {
+    // Guard clauses
+    if (outputImageData.length == 0) return;
+
+    const savedWardrobe = localStorage.getItem("wardrobe") ?? "";
+    localStorage.setItem("wardrobe", `${savedWardrobe};${outputImageData}`);
   };
 
   return (
@@ -164,7 +174,10 @@ const TextTry = () => {
                   <img src={outputImageURL} className="img-thumbnail rounded display-img" alt="outputImage" />
               }
             </div>
-
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
             {/* Download button */}
             <div className="m-2 text-center">
               {
@@ -173,6 +186,18 @@ const TextTry = () => {
                   <div></div>
                   :
                   <a type="button" className="btn btn-primary" href={outputImageURL} download={true}>Download <i className="bi bi-download m-1"></i></a>
+              }
+            </div>
+          </div>
+          <div className="col">
+            {/* Add to wardrobe button */}
+            <div className="m-2 text-center">
+              {
+                outputImageURL === "..."
+                  ?
+                  <div></div>
+                  :
+                  <a type="button" className="btn btn-primary" onClick={addToWardrobe}>Add <i className="bi bi-heart-fill m-1"></i></a>
               }
             </div>
           </div>
