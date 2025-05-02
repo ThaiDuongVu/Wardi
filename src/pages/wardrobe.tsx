@@ -1,32 +1,57 @@
+import { useEffect, useState } from "react";
 import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
+import Spinner from "@/components/spinner";
+import { removeFromArray } from "@/helper";
 import "@/styles/global.css";
-import { useEffect, useState } from "react";
-
 
 const Wardrobe = () => {
-  const [wardrobe, setWardrobe] = useState<string[]>([]);
+  const [wardrobe, setWardrobe] = useState<any[]>([]);
+  const [init, setInit] = useState(false);
+
   useEffect(() => {
+    if (init) return;
+    getWardrobe();
+    setInit(true);
+  }, [init]);
+
+  // Get saved images from local storage
+  const getWardrobe = () => {
+    setWardrobe([]);
     const images = localStorage.getItem("wardrobe")?.split(";") ?? [];
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       if (image.length == 0) continue;
       setWardrobe(wardrobe => [...wardrobe, image]);
     }
-  }, []);
+  }
 
-  const wardrobeDisplay = (src: string) => {
+  // Remove image from wardrobe
+  const removeFromWardrobe = (data: string) => {
+    const newWardrobe = removeFromArray(data, wardrobe);
+    let newItem = "";
+    newWardrobe.forEach((image) => {
+      newItem += image;
+      newItem += ";";
+    });
+    localStorage.setItem("wardrobe", newItem);
+    // Refresh wardrobe
+    getWardrobe();
+  }
+
+  // Card display of wardrobe item
+  const wardrobeItem = (data: string) => {
     return (
-      <div>
-        <div className="card" key={src}>
-          <img src={`data:image/jpeg;base64,${src}`} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
+      <div key={data}>
+        <div className="card">
+          <img src={`data:image/jpeg;base64,${data}`} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
           <div className="card-body container">
             <div className="row">
               <div className="col">
-                <a type="button" className="btn btn-primary" href={`data:image/jpeg;base64,${src}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
+                <a type="button" className="btn btn-primary" href={`data:image/jpeg;base64,${data}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
               </div>
               <div className="col">
-                <button type="button" className="btn btn-primary">Remove <i className="bi bi-trash-fill"></i></button>
+                <button type="button" className="btn btn-primary" onClick={_ => removeFromWardrobe(data)}>Remove <i className="bi bi-trash-fill"></i></button>
               </div>
             </div>
           </div>
@@ -48,12 +73,10 @@ const Wardrobe = () => {
               {
                 wardrobe.length == 0
                   ?
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
+                  <Spinner />
                   :
-                  wardrobe.map(src =>
-                    wardrobeDisplay(src)
+                  wardrobe.map(data =>
+                    wardrobeItem(data)
                   )
               }
             </div>

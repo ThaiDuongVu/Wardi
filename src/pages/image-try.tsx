@@ -1,6 +1,7 @@
-import NavBar from "@/components/navbar";
 import { FormEvent, useState } from "react";
+import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
+import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
 import "@/styles/global.css";
 
@@ -28,6 +29,7 @@ const ImageTry = () => {
   const [outputImageData, setOutputImageData] = useState("");
   const [outputImageURL, setOutputImageURL] = useState("https://placehold.co/256?text=Output+image");
 
+  // Submit data to model
   const submit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -87,12 +89,13 @@ const ImageTry = () => {
     }
   };
 
-  const addToWardrobe = () => {
+  // Add image to wardrobe
+  const addToWardrobe = (data: string) => {
     // Guard clauses
-    if (outputImageData.length == 0) return;
+    if (data.length == 0) return;
 
     const savedWardrobe = localStorage.getItem("wardrobe") ?? "";
-    localStorage.setItem("wardrobe", `${savedWardrobe};${outputImageData}`);
+    localStorage.setItem("wardrobe", `${savedWardrobe};${data}`);
   };
 
   return (
@@ -196,9 +199,7 @@ const ImageTry = () => {
               {
                 outputImageURL === "..."
                   ?
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
+                  <Spinner />
                   :
                   <img src={outputImageURL} className="img-thumbnail rounded display-img" alt="outputImage" />
               }
@@ -227,7 +228,7 @@ const ImageTry = () => {
                   ?
                   <div></div>
                   :
-                  <a type="button" className="btn btn-primary" onClick={addToWardrobe}>Add <i className="bi bi-heart-fill m-1"></i></a>
+                  <a type="button" className="btn btn-primary" onClick={_ => addToWardrobe(outputImageData)}>Add <i className="bi bi-heart-fill m-1"></i></a>
               }
             </div>
           </div>
