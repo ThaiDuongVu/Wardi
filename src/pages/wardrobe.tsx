@@ -20,8 +20,15 @@ const Wardrobe = () => {
       <div>
         <div className="card" key={src}>
           <img src={`data:image/jpeg;base64,${src}`} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
-          <div className="card-body">
-            <button type="button" className="btn btn-primary">Remove <i className="bi bi-trash-fill"></i></button>
+          <div className="card-body container">
+            <div className="row">
+              <div className="col">
+                <a type="button" className="btn btn-primary" href={`data:image/jpeg;base64,${src}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
+              </div>
+              <div className="col">
+                <button type="button" className="btn btn-primary">Remove <i className="bi bi-trash-fill"></i></button>
+              </div>
+            </div>
           </div>
         </div>
         <br />

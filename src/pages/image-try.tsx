@@ -129,8 +129,13 @@ const ImageTry = () => {
               <div className="m-2">
                 <button
                   type="button"
+                  className="btn btn-secondary me-2"
+                  onClick={() => setBaseImageURL("/man.jpg")}>Use sample image <i className="bi bi-image"></i></button>
+
+                <button
+                  type="button"
                   className="btn btn-secondary"
-                  onClick={() => setBaseImageURL("/man.jpg")}>Use sample image</button>
+                  onClick={() => setBaseImageURL("/man.jpg")}>Use profile image <i className="bi bi-person-circle"></i></button>
               </div>
 
               {/* Base image display */}
@@ -164,7 +169,7 @@ const ImageTry = () => {
                 <button
                   type="button"
                   className="btn btn-secondary"
-                  onClick={() => setOutfitImageURL("/shirt.jpg")}>Use sample image</button>
+                  onClick={() => setOutfitImageURL("/shirt.jpg")}>Use sample image <i className="bi bi-image"></i></button>
               </div>
 
               {/* Outfit image display */}
@@ -200,6 +205,7 @@ const ImageTry = () => {
             </div>
           </div>
         </div>
+
         <div className="row">
           <div className="col">
             {/* Download button */}
