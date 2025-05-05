@@ -123,7 +123,11 @@ const TextTry = () => {
                 <button
                   type="button"
                   className="btn btn-secondary"
-                  onClick={() => setBaseImageURL("/man.jpg")}>Use profile image <i className="bi bi-person-circle"></i></button>
+                  onClick={() => {
+                    const data = localStorage.getItem("profile");
+                    if (!data) return;
+                    setBaseImageURL(`data:image/jpeg;base64,${data}`);
+                  }}>Use profile image <i className="bi bi-person-circle"></i></button>
               </div>
 
               {/* Base image display */}

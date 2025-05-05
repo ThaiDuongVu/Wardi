@@ -1,3 +1,2 @@
-profile base image
 import from shop link
 guide video
