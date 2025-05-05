@@ -48,10 +48,10 @@ const Wardrobe = () => {
           <div className="card-body container">
             <div className="row">
               <div className="col">
-                <a type="button" className="btn btn-primary" href={`data:image/jpeg;base64,${data}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
+                <a type="button" className="btn btn-success" href={`data:image/jpeg;base64,${data}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
               </div>
               <div className="col">
-                <button type="button" className="btn btn-primary" onClick={_ => removeFromWardrobe(data)}>Remove <i className="bi bi-trash-fill"></i></button>
+                <button type="button" className="btn btn-danger" onClick={_ => removeFromWardrobe(data)}>Remove <i className="bi bi-trash-fill m-1"></i></button>
               </div>
             </div>
           </div>

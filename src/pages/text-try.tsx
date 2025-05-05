@@ -66,7 +66,7 @@ const TextTry = () => {
       if (part.text) {
         console.log(part.text);
       } else if (part.inlineData) {
-        const data = Buffer.from(part.inlineData.data ?? "", "base64").toString("base64");
+        const data = Buffer.from(part.inlineData.data as string, "base64").toString("base64");
         setOutputImageData(data);
         setOutputImageURL(`data:image/jpeg;base64,${data}`);
       }
@@ -95,7 +95,7 @@ const TextTry = () => {
               {/* Base image uploader */}
               <div className="m-2">
                 <label htmlFor="baseImageInput" className="form-label">
-                  Select base image <i className="bi bi-upload m-1"></i>
+                  Upload base image <i className="bi bi-upload m-1"></i>
                 </label>
                 <input
                   type="file"
@@ -128,7 +128,7 @@ const TextTry = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <img src={baseImageURL} className="img-thumbnail rounded pl display-img" alt="baseImage" />
+                <img src={baseImageURL} className="img-thumbnail rounded display-img" alt="baseImage" />
               </div>
 
               {/* Prompts */}
@@ -170,42 +170,29 @@ const TextTry = () => {
         <div className="row">
           <h4 className="text-center">Output</h4>
           <div className="col">
-            {/* Image output display */}
             <div className="m-2 text-center">
-              {
-                outputImageURL === "..."
-                  ?
-                  <Spinner />
-                  :
-                  <img src={outputImageURL} className="img-thumbnail rounded display-img" alt="outputImage" />
-              }
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            {/* Download button */}
-            <div className="m-2 text-center">
-              {
-                outputImageURL === "..."
-                  ?
-                  <div></div>
-                  :
-                  <a type="button" className="btn btn-primary" href={outputImageURL} download={true}>Download <i className="bi bi-download m-1"></i></a>
-              }
-            </div>
-          </div>
-          <div className="col">
-            {/* Add to wardrobe button */}
-            <div className="m-2 text-center">
-              {
-                outputImageURL === "..."
-                  ?
-                  <div></div>
-                  :
-                  <a type="button" className="btn btn-primary" onClick={_ => addToWardrobe(outputImageData)}>Add <i className="bi bi-heart-fill m-1"></i></a>
-              }
+              <div className="card">
+                {/* Image output display */}
+                {
+                  outputImageURL === "..."
+                    ?
+                    <Spinner />
+                    :
+                    <img src={outputImageURL} className="card-img-top img-thumbnail rounded" alt="outputImage" />
+                }
+                <div className="card-body container">
+                  <div className="row">
+                    <div className="col">
+                      {/* Download button */}
+                      <a type="button" className="btn btn-success" href={outputImageURL} download={true}>Download <i className="bi bi-download m-1"></i></a>
+                    </div>
+                    <div className="col">
+                      {/* Add to wardrobe button */}
+                      <button type="button" className="btn btn-primary" onClick={_ => addToWardrobe(outputImageData)}>Add <i className="bi bi-heart-fill m-1"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
