@@ -27,7 +27,6 @@ module.exports = {
     apiKey: "AIzaSyA7ErpG1h6OkjWeXhsCcdPSrJLBa3_u6kk",
     model: "gemini-2.0-flash-exp-image-generation"
   },
-  distDir: "build",
 }
 
 export default nextConfig;
