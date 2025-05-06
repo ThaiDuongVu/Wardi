@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import { getCookie, setCookie } from "@/cookieManager";
+import { getCookie } from "@/cookieManager";
+import "@/styles/bootstrap-zephyr.css";
+import "@/styles/global.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {

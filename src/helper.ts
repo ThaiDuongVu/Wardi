@@ -1,9 +1,9 @@
-export const removeFromArray = (element: any, array: any[]) => {
+export const removeStringFromArray = (element: string, array: string[]) => {
   const index = array.indexOf(element);
   if (index === -1) return array;
   array.splice(index, 1);
   return array;
-}
+};
 
 export const fileToBase64 = (file?: File) => new Promise((resolve, reject) => {
   if (!file) return;

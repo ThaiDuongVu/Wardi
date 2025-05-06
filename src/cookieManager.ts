@@ -4,8 +4,8 @@ export const setCookie = (name: string, value: string) => {
 }
 
 export const getCookie = (name: string) => {
-  let newName = name + "=";
-  let cookiesArray = document.cookie.split(";");
+  const newName = name + "=";
+  const cookiesArray = document.cookie.split(";");
   for (let i = 0; i < cookiesArray.length; i++) {
     let cookie = cookiesArray[i];
     while (cookie.charAt(0) === " ") {

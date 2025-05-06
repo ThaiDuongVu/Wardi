@@ -1,3 +1,5 @@
 Model name: gemini-2.0-flash-exp-image-generation
 Gemini API Key: AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU
 Theme: https://bootswatch.com/zephyr/
+Test URL for scraping:
+ https://www.amazon.ca/JACK-JONES-T-Shirt-White-Large/dp/B07RXQK5PW?crid=BWUCKV0X1DEL&dib=eyJ2IjoiMSJ9.xTDEXxCW3EnZzsW14BQf086cdw3PvulRz0IeQ82WLfS5ixRO_PXzCt7NdrBcbU2FBpF4fdJjmEiDQHCehNaubDX5-DHhHIsEBlPgSLrCu3Z2AH8nM84N-mhcgMrTeQ6qYY9LHf3-mWLr-mNCsaTOFgKpjHqrzaNUuN5FzldsqnX-KFkcFpBadM8Ra2_SPkHrdG6Hyccs9bavoCPf4mwhHKTL_Hej3mIDF4onY_tdO_9jkOFTikXNb34cRRT2tUK5pswzyovk8agFHmQ5oyyR3DTHonbZK0lEaUKdiso5jHE.1BGNTpftTcy1kXpnFWxuDm7jyhR-w5fFRwJ6ZR9W4-8&dib_tag=se&keywords=t-shirt&qid=1746456896&sprefix=t-shirt%2Caps%2C102&sr=8-10&th=1&psc=1

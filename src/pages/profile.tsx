@@ -1,17 +1,17 @@
 import { FormEvent, useEffect, useState } from "react";
 import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
-import "@/styles/global.css";
 import { fileToBase64 } from "@/helper";
+import Image from "next/image";
 
 const Profile = () => {
   // Input image
-  const [profileImageURL, setProfileImageURL] = useState("https://placehold.co/256?text=Profile+image");
+  const [profileImageURL, setProfileImageURL] = useState("/placeholder.png");
   const [profileImageFile, setProfileImageFile] = useState<File>();
-  const onProfileImageChange = (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      setProfileImageFile(event.target.files[0]);
-      setProfileImageURL(URL.createObjectURL(event.target.files[0]));
+  const onProfileImageChange = (event: FormEvent) => {
+    if ((event.target as HTMLInputElement).files) {
+      setProfileImageFile((event.target as HTMLInputElement).files![0]);
+      setProfileImageURL(URL.createObjectURL((event.target as HTMLInputElement).files![0]));
     }
   };
 
@@ -39,7 +39,7 @@ const Profile = () => {
   // Remove profile image
   const remove = () => {
     localStorage.removeItem("profile");
-    setProfileImageURL("https://placehold.co/256?text=Profile+image");
+    setProfileImageURL("/placeholder.png");
   };
 
   return (
@@ -67,7 +67,7 @@ const Profile = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <img src={profileImageURL} className="img-thumbnail rounded display-img" alt="profileImage" />
+                <Image src={profileImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="profileImage" />
               </div>
             </form>
           </div>

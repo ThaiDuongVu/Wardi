@@ -1,6 +1,6 @@
-import "@/styles/global.css";
 import Link from "next/link";
 import Settings from "./settings";
+import Image from "next/image";
 
 const NavBar = ({ activePage }: { activePage: string }) => {
   return (
@@ -8,9 +8,9 @@ const NavBar = ({ activePage }: { activePage: string }) => {
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div className="container-fluid">
           {/* Brand */}
-          <a className="navbar-brand" href="/" aria-label="brand">
-            <img src="/icon.png" alt="icon" className="img-fluid rounded navbar-icon" />
-          </a>
+          <Link className="navbar-brand" href="/" aria-label="brand">
+            <Image src="/icon.png" width={100} height={100} unoptimized= {true} alt="icon" className="img-fluid rounded navbar-icon" />
+          </Link>
 
           {/* Button for mobile interface */}
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarContent" aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation">

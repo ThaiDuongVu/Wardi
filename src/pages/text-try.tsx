@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
-import "@/styles/global.css";
+import Image from "next/image";
 
 const TextTry = () => {
   const ai = new GoogleGenAI({ apiKey: process.env.apiKey });
@@ -13,23 +13,23 @@ const TextTry = () => {
   const [noOutfitPrompt, setNoOutfitPrompt] = useState(false);
 
   // Input image
-  const [baseImageURL, setBaseImageURL] = useState("https://placehold.co/256?text=Base+image");
+  const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");
   const [noBaseImage, setNoBaseImage] = useState(false);
-  const onBaseImageChange = (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      setBaseImageURL(URL.createObjectURL(event.target.files[0]));
+  const onBaseImageChange = (event: FormEvent) => {
+    if ((event.target as HTMLInputElement).files) {
+      setBaseImageURL(URL.createObjectURL((event.target as HTMLInputElement).files![0]));
     }
   };
   // Output image
   const [outputImageData, setOutputImageData] = useState("");
-  const [outputImageURL, setOutputImageURL] = useState("https://placehold.co/256?text=Output+image");
+  const [outputImageURL, setOutputImageURL] = useState("/placeholder.png");
 
   // Submit data to model
   const submit = async (event: FormEvent) => {
     event.preventDefault();
 
     // Guard clauses
-    const noBase = baseImageURL === "https://placehold.co/256?text=Base+image";
+    const noBase = baseImageURL === "/placeholder.png";
     setNoBaseImage(noBase);
     const noOutfit = outfitPrompt === "";
     setNoOutfitPrompt(noOutfit);
@@ -132,7 +132,7 @@ const TextTry = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <img src={baseImageURL} className="img-thumbnail rounded display-img" alt="baseImage" />
+                <Image src={baseImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="baseImage" />
               </div>
 
               {/* Prompts */}
@@ -182,7 +182,7 @@ const TextTry = () => {
                     ?
                     <Spinner />
                     :
-                    <img src={outputImageURL} className="card-img-top img-thumbnail rounded" alt="outputImage" />
+                    <Image src={outputImageURL} width={100} height={100} unoptimized= {true} className="card-img-top img-thumbnail rounded" alt="outputImage" />
                 }
                 <div className="card-body container">
                   <div className="row">
@@ -192,7 +192,7 @@ const TextTry = () => {
                     </div>
                     <div className="col">
                       {/* Add to wardrobe button */}
-                      <button type="button" className="btn btn-primary" onClick={_ => addToWardrobe(outputImageData)}>Add <i className="bi bi-heart-fill m-1"></i></button>
+                      <button type="button" className="btn btn-primary" onClick={() => addToWardrobe(outputImageData)}>Add <i className="bi bi-heart-fill m-1"></i></button>
                     </div>
                   </div>
                 </div>

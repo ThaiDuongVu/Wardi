@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
-import { removeFromArray } from "@/helper";
-import "@/styles/global.css";
+import { removeStringFromArray } from "@/helper";
+import Image from "next/image";
 
 const Wardrobe = () => {
-  const [wardrobe, setWardrobe] = useState<any[]>([]);
+  const [wardrobe, setWardrobe] = useState<string[]>([]);
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Wardrobe = () => {
 
   // Remove image from wardrobe
   const removeFromWardrobe = (data: string) => {
-    const newWardrobe = removeFromArray(data, wardrobe);
+    const newWardrobe = removeStringFromArray(data, wardrobe);
     let newItem = "";
     newWardrobe.forEach((image) => {
       newItem += image;
@@ -44,14 +44,14 @@ const Wardrobe = () => {
     return (
       <div key={data}>
         <div className="card">
-          <img src={`data:image/jpeg;base64,${data}`} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
+          <Image src={`data:image/jpeg;base64,${data}`} width={100} height={100} unoptimized= {true} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
           <div className="card-body container">
             <div className="row">
               <div className="col">
                 <a type="button" className="btn btn-success" href={`data:image/jpeg;base64,${data}`} download={true}>Download <i className="bi bi-download m-1"></i></a>
               </div>
               <div className="col">
-                <button type="button" className="btn btn-danger" onClick={_ => removeFromWardrobe(data)}>Remove <i className="bi bi-trash-fill m-1"></i></button>
+                <button type="button" className="btn btn-danger" onClick={() => removeFromWardrobe(data)}>Remove <i className="bi bi-trash-fill m-1"></i></button>
               </div>
             </div>
           </div>
