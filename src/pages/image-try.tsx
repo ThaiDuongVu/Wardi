@@ -3,7 +3,7 @@ import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
-import * as cheerio from "cheerio";
+// import * as cheerio from "cheerio";
 import Image from "next/image";
 
 const ImageTry = () => {
