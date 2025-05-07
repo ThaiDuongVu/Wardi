@@ -32,7 +32,7 @@ const ImageTry = () => {
     if (shopURL.length === 0) return;
 
     fetch(shopURL, {
-      mode: "no-cors",
+      mode: "cors",
       method: "GET",
       credentials: "include",
       headers: {
