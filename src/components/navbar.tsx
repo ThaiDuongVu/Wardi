@@ -9,7 +9,7 @@ const NavBar = ({ activePage }: { activePage: string }) => {
         <div className="container-fluid">
           {/* Brand */}
           <Link className="navbar-brand" href="/" aria-label="brand">
-            <Image src="/icon.png" width={100} height={100} unoptimized= {true} alt="icon" className="img-fluid rounded navbar-icon" />
+            <Image src="/icon.png" width={100} height={100} unoptimized={true} alt="icon" className="img-fluid rounded navbar-icon" />
           </Link>
 
           {/* Button for mobile interface */}

@@ -132,7 +132,7 @@ const TextTry = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <Image src={baseImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                <Image src={baseImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
               </div>
 
               {/* Prompts */}
@@ -182,7 +182,7 @@ const TextTry = () => {
                     ?
                     <Spinner />
                     :
-                    <Image src={outputImageURL} width={100} height={100} unoptimized= {true} className="card-img-top img-thumbnail rounded" alt="outputImage" />
+                    <Image src={outputImageURL} width={100} height={100} unoptimized={true} className="card-img-top img-thumbnail rounded" alt="outputImage" />
                 }
                 <div className="card-body container">
                   <div className="row">

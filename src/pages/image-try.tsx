@@ -32,8 +32,8 @@ const ImageTry = () => {
     if (shopURL.length === 0) return;
 
     fetch(shopURL, {
+      mode: "no-cors",
       method: "GET",
-      mode: "cors",
       credentials: "include",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -42,17 +42,18 @@ const ImageTry = () => {
       }
     })
       .then(response => {
-        return response.text()
+        return response.text();
       })
       .then(data => {
-        const $ = cheerio.load(data);
-        const results: (string | undefined)[] = [];
-        const images = $("body").find("img");
-        images.each((index: number, image) => {
-          const src = $(image).attr("src");
-          results.push(src);
-        });
-        console.log(results);
+        console.log(data);
+        // const $ = cheerio.load(data);
+        // const results: (string | undefined)[] = [];
+        // const images = $("body").find("img");
+        // images.each((index: number, image) => {
+        //   const src = $(image).attr("src");
+        //   results.push(src);
+        // });
+        // console.log(results);
       })
       .catch(error => {
         console.error(error)
@@ -182,7 +183,7 @@ const ImageTry = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <Image src={baseImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                <Image src={baseImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
               </div>
 
               {/* Outfit image uploader */}
@@ -233,7 +234,7 @@ const ImageTry = () => {
 
               {/* Outfit image display */}
               <div className="m-2 text-center">
-                <Image src={outfitImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                <Image src={outfitImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
               </div>
 
               {/* Submit */}
@@ -259,7 +260,7 @@ const ImageTry = () => {
                     ?
                     <Spinner />
                     :
-                    <Image src={outputImageURL} width={100} height={100} unoptimized= {true} className="card-img-top img-thumbnail rounded" alt="outputImage" />
+                    <Image src={outputImageURL} width={100} height={100} unoptimized={true} className="card-img-top img-thumbnail rounded" alt="outputImage" />
                 }
                 <div className="card-body container">
                   <div className="row">

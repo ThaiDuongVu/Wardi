@@ -44,7 +44,7 @@ const Wardrobe = () => {
     return (
       <div key={data}>
         <div className="card">
-          <Image src={`data:image/jpeg;base64,${data}`} width={100} height={100} unoptimized= {true} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
+          <Image src={`data:image/jpeg;base64,${data}`} width={100} height={100} unoptimized={true} className="card-img-top img-thumbnail rounded" alt="wardrobeImage" />
           <div className="card-body container">
             <div className="row">
               <div className="col">

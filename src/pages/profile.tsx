@@ -67,7 +67,7 @@ const Profile = () => {
 
               {/* Base image display */}
               <div className="m-2 text-center">
-                <Image src={profileImageURL} width={100} height={100} unoptimized= {true} className="img-thumbnail rounded display-img" alt="profileImage" />
+                <Image src={profileImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="profileImage" />
               </div>
             </form>
           </div>
