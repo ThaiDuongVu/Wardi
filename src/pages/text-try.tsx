@@ -1,11 +1,18 @@
 import NavBar from "@/components/navbar";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
 import Image from "next/image";
+import Toast from "@/components/toast";
+import { showToast } from "@/helper";
 
 const TextTry = () => {
+  let bootstrap: NodeJS.Require;
+  useEffect(() => {
+    /* eslint-disable */
+    bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
+  });
   const ai = new GoogleGenAI({ apiKey: process.env.apiKey });
 
   // Outfit prompt
@@ -78,8 +85,12 @@ const TextTry = () => {
     // Guard clauses
     if (outputImageData.length == 0) return;
 
+    // Save to local storage
     const savedWardrobe = localStorage.getItem("wardrobe") ?? "";
     localStorage.setItem("wardrobe", `${savedWardrobe};${data}`);
+
+    // Show message
+    showToast(bootstrap, "addToast");
   };
 
   return (
@@ -201,6 +212,8 @@ const TextTry = () => {
           </div>
         </div>
       </div >
+
+      <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout >
   )
 };

@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
-import Spinner from "@/components/spinner";
 import { removeStringFromArray } from "@/helper";
 import Image from "next/image";
+import Toast from "@/components/toast";
+import { showToast } from "@/helper";
 
 const Wardrobe = () => {
+  let bootstrap: NodeJS.Require;
+  useEffect(() => {
+    /* eslint-disable */
+    bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
+  });
+
   const [wardrobe, setWardrobe] = useState<string[]>([]);
   const [init, setInit] = useState(false);
 
@@ -37,6 +44,9 @@ const Wardrobe = () => {
     localStorage.setItem("wardrobe", newItem);
     // Refresh wardrobe
     getWardrobe();
+
+    // Show message
+    showToast(bootstrap, "removeToast");
   }
 
   // Card display of wardrobe item
@@ -73,7 +83,7 @@ const Wardrobe = () => {
               {
                 wardrobe.length == 0
                   ?
-                  <Spinner />
+                  <p className="text-body-tertiary">Items added to wardrobe will appear here</p>
                   :
                   wardrobe.map(data =>
                     wardrobeItem(data)
@@ -83,6 +93,8 @@ const Wardrobe = () => {
           </div>
         </div>
       </div>
+
+      <Toast id="removeToast" header="Removed" message="Image removed from wardrobe" />
     </RootLayout>
   );
 };

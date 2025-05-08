@@ -12,3 +12,10 @@ export const fileToBase64 = (file?: File) => new Promise((resolve, reject) => {
   reader.onload = () => resolve(Buffer.from(reader.result as string, "base64").toString("base64"));
   reader.onerror = reject;
 });
+
+/* eslint-disable */
+export const showToast = (bootstrap: any, id: string) => {
+  const element = document.getElementById(id);
+  const toast = bootstrap.Toast.getOrCreateInstance(element);
+  toast.show();
+};

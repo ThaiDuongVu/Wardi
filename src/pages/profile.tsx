@@ -3,8 +3,16 @@ import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
 import { fileToBase64 } from "@/helper";
 import Image from "next/image";
+import Toast from "@/components/toast";
+import { showToast } from "@/helper";
 
 const Profile = () => {
+  let bootstrap: NodeJS.Require;
+  useEffect(() => {
+    /* eslint-disable */
+    bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
+  });
+
   // Input image
   const [profileImageURL, setProfileImageURL] = useState("/placeholder.png");
   const [profileImageFile, setProfileImageFile] = useState<File>();
@@ -26,20 +34,28 @@ const Profile = () => {
 
   // Save profile image
   const submit = async (event: FormEvent) => {
-    event?.preventDefault();
+    event.preventDefault();
 
     // Guard clauses
     if (!profileImageFile) return;
 
+    // Save to local storage
     const profileImageData = await fileToBase64(profileImageFile);
     localStorage.removeItem("profile");
     localStorage.setItem("profile", profileImageData as string);
+
+    // Show message
+    showToast(bootstrap, "saveToast");
   };
 
   // Remove profile image
   const remove = () => {
+    // Remove from local storage
     localStorage.removeItem("profile");
     setProfileImageURL("/placeholder.png");
+
+    // Show message
+    showToast(bootstrap, "removeToast");
   };
 
   return (
@@ -91,6 +107,9 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
+      <Toast id="saveToast" header="Saved" message="Image saved as profile" />
+      <Toast id="removeToast" header="Removed" message="Image removed from profile" />
     </RootLayout>
   )
 };
