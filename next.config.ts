@@ -23,8 +23,8 @@ const nextConfig: NextConfig = {
 module.exports = {
   // Environment variables
   env: {
-    email: "tabbycatmakegames@gmail.com",
-    apiKey: "AIzaSyA7ErpG1h6OkjWeXhsCcdPSrJLBa3_u6kk",
+    email: "vu.t.duong01@gmail.com",
+    apiKey: "AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU",
     model: "gemini-2.0-flash-exp-image-generation"
   },
 }
