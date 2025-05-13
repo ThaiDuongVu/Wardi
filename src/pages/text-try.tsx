@@ -15,18 +15,16 @@ const TextTry = () => {
   });
   const ai = new GoogleGenAI({ apiKey: process.env.apiKey });
 
-  // Outfit prompt
-  const [outfitPrompt, setOutfitPrompt] = useState("");
-  const [noOutfitPrompt, setNoOutfitPrompt] = useState(false);
-
   // Input image
   const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");
-  const [noBaseImage, setNoBaseImage] = useState(false);
   const onBaseImageChange = (event: FormEvent) => {
     if ((event.target as HTMLInputElement).files) {
       setBaseImageURL(URL.createObjectURL((event.target as HTMLInputElement).files![0]));
     }
   };
+  // Outfit prompt
+  const [outfitPrompt, setOutfitPrompt] = useState("");
+
   // Output image
   const [outputImageData, setOutputImageData] = useState("");
   const [outputImageURL, setOutputImageURL] = useState("/placeholder.png");
@@ -36,11 +34,14 @@ const TextTry = () => {
     event.preventDefault();
 
     // Guard clauses
-    const noBase = baseImageURL === "/placeholder.png";
-    setNoBaseImage(noBase);
-    const noOutfit = outfitPrompt === "";
-    setNoOutfitPrompt(noOutfit);
-    if (noBase || noOutfit) return;
+    if (baseImageURL === "/placeholder.png") {
+      showToast(bootstrap, "noImageToast");
+      return;
+    }
+    if (outfitPrompt === "") {
+      showToast(bootstrap, "noOutfitToast");
+      return;
+    }
     setOutputImageURL("...");
 
     // Create and convert base image data
@@ -115,15 +116,6 @@ const TextTry = () => {
                   id="baseImageInput"
                   onChange={(onBaseImageChange)}
                 />
-                {
-                  noBaseImage
-                    ?
-                    <div className="alert alert-danger" role="alert">
-                      Please upload a base image
-                    </div>
-                    :
-                    <div></div>
-                }
               </div>
               <div className="m-2">
                 <button
@@ -159,15 +151,6 @@ const TextTry = () => {
                   value={outfitPrompt}
                   onChange={event => setOutfitPrompt(event.target.value)}>
                 </textarea>
-                {
-                  noOutfitPrompt
-                    ?
-                    <div className="alert alert-danger" role="alert">
-                      Please input the desired outfit
-                    </div>
-                    :
-                    <div></div>
-                }
               </div>
 
               {/* Submit */}
@@ -213,6 +196,8 @@ const TextTry = () => {
         </div>
       </div >
 
+      <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
+      <Toast id="noOutfitToast" header="Error" message="Please fill out an outfit!" isError={true} />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout >
   )

@@ -18,7 +18,6 @@ const ImageTry = () => {
 
   // Input image
   const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");
-  const [noBaseImage, setNoBaseImage] = useState(false);
   const onBaseImageChange = (event: FormEvent) => {
     if ((event.target as HTMLInputElement).files) {
       setBaseImageURL(URL.createObjectURL((event.target as HTMLInputElement).files![0]));
@@ -26,7 +25,6 @@ const ImageTry = () => {
   };
   // Outfit image
   const [outfitImageURL, setOutfitImageURL] = useState("/placeholder.png");
-  const [noOutfitImage, setNoOutfitImage] = useState(false);
   const onOutfitImageChange = (event: FormEvent) => {
     if ((event.target as HTMLInputElement).files) {
       setOutfitImageURL(URL.createObjectURL((event.target as HTMLInputElement).files![0]));
@@ -76,11 +74,14 @@ const ImageTry = () => {
     event.preventDefault();
 
     // Guard clauses
-    const noBase = baseImageURL === "/placeholder.png";
-    setNoBaseImage(noBase);
-    const noOutfit = outfitImageURL === "/placeholder.png";
-    setNoOutfitImage(noOutfit);
-    if (noBase || noOutfit) return;
+    if (baseImageURL === "/placeholder.png") {
+      showToast(bootstrap, "noImageToast");
+      return;
+    }
+    if (outfitImageURL === "/placeholder.png") {
+      showToast(bootstrap, "noOutfitToast");
+      return;
+    };
     setOutputImageURL("...");
 
     // Create and convert base image data
@@ -166,15 +167,6 @@ const ImageTry = () => {
                   id="baseImageInput"
                   onChange={(onBaseImageChange)}
                 />
-                {
-                  noBaseImage
-                    ?
-                    <div className="alert alert-danger" role="alert">
-                      Please upload a base image
-                    </div>
-                    :
-                    <div></div>
-                }
               </div>
               <div className="m-2">
                 <button
@@ -209,15 +201,6 @@ const ImageTry = () => {
                   id="outfitImageInput"
                   onChange={(onOutfitImageChange)}
                 />
-                {
-                  noOutfitImage
-                    ?
-                    <div className="alert alert-danger" role="alert">
-                      Please upload an outfit image
-                    </div>
-                    :
-                    <div></div>
-                }
               </div>
               <div className="m-2">
                 <div className="form-floating">
@@ -290,7 +273,9 @@ const ImageTry = () => {
           </div>
         </div>
       </div>
-
+      
+      <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
+      <Toast id="noOutfitToast" header="Error" message="Please upload an outfit image!" isError={true} />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout>
   )
