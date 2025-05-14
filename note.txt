@@ -1,5 +1,12 @@
 Model name: gemini-2.0-flash-exp-image-generation
 Gemini API Key: AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU
 Theme: https://bootswatch.com/zephyr/
-Test URL for scraping:
+CORS proxies:
+ https://cors.lol/
+ https://cors-proxy.htmldriven.com
+ https://corsproxy.github.io/
+
+Test URLs for scraping:
  https://www.amazon.ca/JACK-JONES-T-Shirt-White-Large/dp/B07RXQK5PW?crid=BWUCKV0X1DEL&dib=eyJ2IjoiMSJ9.xTDEXxCW3EnZzsW14BQf086cdw3PvulRz0IeQ82WLfS5ixRO_PXzCt7NdrBcbU2FBpF4fdJjmEiDQHCehNaubDX5-DHhHIsEBlPgSLrCu3Z2AH8nM84N-mhcgMrTeQ6qYY9LHf3-mWLr-mNCsaTOFgKpjHqrzaNUuN5FzldsqnX-KFkcFpBadM8Ra2_SPkHrdG6Hyccs9bavoCPf4mwhHKTL_Hej3mIDF4onY_tdO_9jkOFTikXNb34cRRT2tUK5pswzyovk8agFHmQ5oyyR3DTHonbZK0lEaUKdiso5jHE.1BGNTpftTcy1kXpnFWxuDm7jyhR-w5fFRwJ6ZR9W4-8&dib_tag=se&keywords=t-shirt&qid=1746456896&sprefix=t-shirt%2Caps%2C102&sr=8-10&th=1&psc=1
+
+ https://www.amazon.ca/Royal-Coalition-Letterman-Basketball-Black-black/dp/B0DFTYD3FD/ref=sr_1_2_sspa?crid=1YBH5BVF9VHWC&dib=eyJ2IjoiMSJ9.nnPcgVtXOZLoXsVJEayekou3zoYzxqy8MNnU9661CJs-jZA2eltZ4wyZZNoBtY3lnGRcoKGyVsysnsorE7IdGzvmStYlzY0uIcD-P8_KZqko2kdRrOj5cbLBC4_gXDfaV-RJNvzSrwK5NCGiB8GIRf7xVNlUZgP3Hh6Pz8zqne81HNYfYG5Wdzc-izONa3u_ESUMBHMteLq82PAyIJ0cXgv4bl-4IezWU9zrHyiTVN0s1q0t37Fqo2uIVrRwdEpHebEeFWZk1ygwDPYYH-DtAG9W-AxUd41qBwYTrrCjs70.aN_WJ0XLc06Ba17Fjb-RHbWWj5gzd1uW16rk2dXGXPQ&dib_tag=se&keywords=jacket&qid=1747230236&sprefix=jacket%2Caps%2C78&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1

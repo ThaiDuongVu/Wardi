@@ -3,7 +3,7 @@ import NavBar from "@/components/navbar";
 import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
-// import * as cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import Image from "next/image";
 import Toast from "@/components/toast";
 import { showToast } from "@/helper";
@@ -36,29 +36,31 @@ const ImageTry = () => {
   const importFromShop = () => {
     if (shopURL.length === 0) return;
 
-    fetch(shopURL, {
+    fetch(`https://api.cors.lol/?url=${shopURL}`, {
       mode: "cors",
       method: "GET",
-      credentials: "include",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-      }
+      // credentials: "include",
+      // headers: {
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+      //   "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+      // }
     })
       .then(response => {
         return response.text();
       })
+      // Only work for Amazon links for now
+      // TODO: Handle other sites
       .then(data => {
-        console.log(data);
-        // const $ = cheerio.load(data);
-        // const results: (string | undefined)[] = [];
-        // const images = $("body").find("img");
-        // images.each((index: number, image) => {
-        //   const src = $(image).attr("src");
-        //   results.push(src);
-        // });
-        // console.log(results);
+        const $ = cheerio.load(data);
+        const results: (string | undefined)[] = [];
+        const images = $("#main-image-container").find("img");
+        images.each((_index: number, image) => {
+          const src = $(image).attr("src");
+          results.push(src);
+        });
+        const src = results[results.length - 1] ?? "";
+        setOutfitImageURL(src);
       })
       .catch(error => {
         console.error(error)
@@ -273,9 +275,10 @@ const ImageTry = () => {
           </div>
         </div>
       </div>
-      
+
       <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
       <Toast id="noOutfitToast" header="Error" message="Please upload an outfit image!" isError={true} />
+      <Toast id="outfitToast" header="Imported" message="Image imported from shop!" />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout>
   )
