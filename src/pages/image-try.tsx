@@ -49,9 +49,9 @@ const ImageTry = () => {
       .then(response => {
         return response.text();
       })
-      // Only work for Amazon links for now
-      // TODO: Handle other sites
       .then(data => {
+        // Only work with Amazon links for now
+        // TODO: Handle other sites: ebay, etsy, hottopic, shopify
         const $ = cheerio.load(data);
         const results: (string | undefined)[] = [];
         const images = $("#main-image-container").find("img");
@@ -61,6 +61,7 @@ const ImageTry = () => {
         });
         const src = results[results.length - 1] ?? "";
         setOutfitImageURL(src);
+        showToast(bootstrap, "outfitToast");
       })
       .catch(error => {
         console.error(error)
@@ -278,7 +279,7 @@ const ImageTry = () => {
 
       <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
       <Toast id="noOutfitToast" header="Error" message="Please upload an outfit image!" isError={true} />
-      <Toast id="outfitToast" header="Imported" message="Image imported from shop!" />
+      <Toast id="outfitToast" header="Imported" message="Outfit imported from shop!" />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout>
   )
