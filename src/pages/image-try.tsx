@@ -50,21 +50,45 @@ const ImageTry = () => {
         return response.text();
       })
       .then(data => {
-        // Only work with Amazon links for now
-        // TODO: Handle other sites: ebay, etsy, hottopic, shopify
         const $ = cheerio.load(data);
-        const results: (string | undefined)[] = [];
-        const images = $("#main-image-container").find("img");
-        images.each((_index: number, image) => {
-          const src = $(image).attr("src");
-          results.push(src);
-        });
-        const src = results[results.length - 1] ?? "";
+        const results: string[] = [];
+        let src: string = "";
+
+        // Handle multiple shop domains
+        try {
+          const host = new URL(shopURL).hostname;
+          const shop = host.split(".")[1];
+          if (shop === "amazon") {
+            // Amazon
+            const images = $("#main-image-container").find("img");
+            images.each((_index: number, image) => {
+              const src = $(image).attr("src");
+              results.push(src ?? "");
+            });
+            src = results[results.length - 1] ?? "";
+          } else if (shop === "ebay") {
+            // Ebay
+            const images = $(".ux-image-carousel-item").find("img");
+            images.each((_index: number, image) => {
+              const src = $(image).attr("src");
+              results.push(src ?? "");
+            });
+            src = results[0];
+          } else {
+            // If shop not supported then return
+            showToast(bootstrap, "shopErrorToast");
+            return;
+          }
+        } catch (error) {
+          showToast(bootstrap, "shopErrorToast");
+          console.error(error);
+          return;
+        }
         setOutfitImageURL(src);
         showToast(bootstrap, "outfitToast");
       })
       .catch(error => {
-        console.error(error)
+        console.error(error);
       });
   };
 
@@ -279,6 +303,7 @@ const ImageTry = () => {
 
       <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
       <Toast id="noOutfitToast" header="Error" message="Please upload an outfit image!" isError={true} />
+      <Toast id="shopErrorToast" header="Error" message="Shop URL not supported!" isError={true} />
       <Toast id="outfitToast" header="Imported" message="Outfit imported from shop!" />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />
     </RootLayout>
