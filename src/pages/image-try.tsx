@@ -4,16 +4,19 @@ import RootLayout from "@/components/layout";
 import Spinner from "@/components/spinner";
 import { GoogleGenAI, Modality } from "@google/genai";
 import * as cheerio from "cheerio";
+import axios from "axios";
 import Image from "next/image";
 import Toast from "@/components/toast";
-import { showToast } from "@/helper";
+import { initTooltip, showToast } from "@/helper";
 
 const ImageTry = () => {
   let bootstrap: NodeJS.Require;
   useEffect(() => {
     /* eslint-disable */
     bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
+    initTooltip(bootstrap);
   });
+
   const ai = new GoogleGenAI({ apiKey: process.env.apiKey });
 
   // Input image
@@ -36,21 +39,11 @@ const ImageTry = () => {
   const importFromShop = () => {
     if (shopURL.length === 0) return;
 
-    fetch(`https://api.cors.lol/?url=${shopURL}`, {
-      mode: "cors",
+    axios.get(`https://api.cors.lol/?url=${shopURL}`, {
       method: "GET",
-      // credentials: "include",
-      // headers: {
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-      //   "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-      // }
     })
       .then(response => {
-        return response.text();
-      })
-      .then(data => {
-        const $ = cheerio.load(data);
+        const $ = cheerio.load(response.data);
         const results: string[] = [];
         let src: string = "";
 
@@ -74,6 +67,16 @@ const ImageTry = () => {
               results.push(src ?? "");
             });
             src = results[0];
+          } else if (shop === "etsy") {
+            // TODO: Etsy
+            return;
+          } else if (shop === "hottopic") {
+            const images = $("#primary-image").find("img");
+            images.each((_index: number, image) => {
+              const src = $(image).attr("src");
+              results.push(src ?? "");
+            });
+            src = results[0];
           } else {
             // If shop not supported then return
             showToast(bootstrap, "shopErrorToast");
@@ -81,7 +84,6 @@ const ImageTry = () => {
           }
         } catch (error) {
           showToast(bootstrap, "shopErrorToast");
-          console.error(error);
           return;
         }
         setOutfitImageURL(src);
@@ -199,7 +201,7 @@ const ImageTry = () => {
                 <button
                   type="button"
                   className="btn btn-secondary me-2"
-                  onClick={() => setBaseImageURL("/man.jpg")}>Use sample image <i className="bi bi-image"></i></button>
+                  onClick={() => setBaseImageURL("/man.jpg")}>Use sample <i className="bi bi-image"></i></button>
 
                 <button
                   type="button"
@@ -208,7 +210,7 @@ const ImageTry = () => {
                     const data = localStorage.getItem("profile");
                     if (!data) return;
                     setBaseImageURL(`data:image/jpeg;base64,${data}`);
-                  }}>Use profile image <i className="bi bi-person-circle"></i></button>
+                  }}>Use profile <i className="bi bi-person-circle"></i></button>
               </div>
 
               {/* Base image display */}
@@ -246,11 +248,15 @@ const ImageTry = () => {
                 <button
                   type="button"
                   className="btn btn-secondary me-2"
-                  onClick={() => setOutfitImageURL("/shirt.jpg")}>Use sample image <i className="bi bi-image"></i></button>
+                  onClick={() => setOutfitImageURL("/shirt.jpg")}>Use sample <i className="bi bi-image"></i></button>
                 <button
                   type="button"
                   className="btn btn-secondary"
-                  onClick={() => importFromShop()}>Import from shop <i className="bi bi-bag-fill"></i></button>
+                  onClick={() => importFromShop()}
+                  data-bs-toggle="tooltip"
+                  data-bs-title="Supported shops: Amazon, Ebay, Etsy, Hottopic"
+                  data-bs-placement="right"
+                >Import from shop <i className="bi bi-bag-fill"></i></button>
               </div>
 
               {/* Outfit image display */}

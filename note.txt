@@ -12,3 +12,9 @@ Test URLs for scraping:
 
  Ebay:
  https://www.ebay.ca/itm/114170113445?_skw=jacket&itmmeta=01JV7HWEVC97YKX3P1NQKFWMQZ&hash=item1a9511ada5:g:gjYAAOSw8~5eh7F6&itmprp=enc%3AAQAKAAAAwFkggFvd1GGDu0w3yXCmi1cn1Lzum%2B1FnVGrlY%2FzxDoemEvEZYzPj3dlcgcxz90%2BG5m3WQ97eaIUlfNo4p4x24%2B7cRRBDBoL9cI%2FUi51QuZZBCc%2BH1w944ehbBUuX6kJTg66YSJFqyb1jAJmPR5By%2F77%2FnUNYUz0oxTiX%2BTQWMVXyOxx7CqwgVPnztTCHFZy4hACbI9zWUHaiQhawzE6TPO6p2kmK9bcosPdAP40je3%2FXOfKblUGPvBbFxYG%2F5v5jw%3D%3D%7Ctkp%3ABlBMUMDu8fHZZQ
+
+ Etsy:
+ https://www.etsy.com/ca/listing/1877973740/boho-cotton-dress-lightweight-breathable?ls=s&ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=&ref=sr_gallery-1-3&pro=1&frs=1&content_source=d96e769d90a69518b156c559485cc5fe19553c7d%253A1877973740&organic_search_click=1&logging_key=d96e769d90a69518b156c559485cc5fe19553c7d%3A1877973740
+
+ Hottopic:
+ https://www.hottopic.com/product/cosmic-aura-black-3d-butterfly-babydoll-dress/33318733.html?cm_src=Homepage-_-DPG1-_-sale-pop-culture-must-haves-33318733

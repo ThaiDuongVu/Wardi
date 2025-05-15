@@ -13,9 +13,19 @@ export const fileToBase64 = (file?: File) => new Promise((resolve, reject) => {
   reader.onerror = reject;
 });
 
+//#region Bootstrap functions
+
+/* eslint-disable */
+export const initTooltip = (bootstrap: any) => {
+  const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+}
+
 /* eslint-disable */
 export const showToast = (bootstrap: any, id: string) => {
   const element = document.getElementById(id);
   const toast = bootstrap.Toast.getOrCreateInstance(element);
   toast.show();
 };
+
+//#endregion
