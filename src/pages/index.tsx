@@ -4,13 +4,14 @@ import NavBar from "@/components/navbar";
 import Header from "@/components/header";
 import RootLayout from "@/components/layout";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const Home = () => {
   // Whether running on a mobile device
-  // const [isMobile, setIsMobile] = useState(false);
-  // useEffect(() => {
-  //   setIsMobile(window.matchMedia("(max-width: 767px)").matches);
-  // });
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 767px)").matches);
+  });
 
   return (
     <RootLayout>
@@ -35,6 +36,21 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {
+        isMobile
+          ?
+          <div className="container root-content">
+            <div className="ratio ratio-1x1">
+              <iframe src="/readme/mobile-demo.mp4" allowFullScreen title="demo video"></iframe>
+            </div>
+          </div>
+          :
+          <div className="container">
+            <div className="ratio ratio-16x9">
+              <iframe src="/readme/text-based-demo.mp4" allowFullScreen title="demo video"></iframe>
+            </div>
+          </div>
+      }
     </RootLayout>
   );
 };
