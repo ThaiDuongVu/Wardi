@@ -41,10 +41,10 @@ All data are stored locally without the user's need to provide their information
 Styling in **Wardi** is provided by Bootstrap. By default, the site is shown in light mode but users have the option to view the site in dark mode should they want.
 
 <a href="">
-    <img src="/public/readme/light.png" width=300 />
+    <img src="/public/readme/light.png" width=350 />
 </a>
 <a href="">
-    <img src="/public/readme/dark.png" width=300 />
+    <img src="/public/readme/dark.png" width=350 />
 </a>
 
 ### Mobile-friendly interface
