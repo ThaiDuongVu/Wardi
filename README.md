@@ -1,4 +1,4 @@
-# <img src="/public/icon2.png" width=75/>ardi
+# <img src="/public/icon2.png" width=60/>ardi
 
 **Wardi** is a virtual wardrobe that allows users to try-on different clothing using AI. [Hosted on Netlify.](https://wwwardi.netlify.app/)
 
@@ -40,11 +40,15 @@ All data are stored locally without the user's need to provide their information
 
 Styling in **Wardi** is provided by Bootstrap. By default, the site is shown in light mode but users have the option to view the site in dark mode should they want.
 
-<img src="/public/readme/light.png" width=300 />
-<img src="/public/readme/dark.png" width=300 />
+<a href="">
+    <img src="/public/readme/light.png" width=300 />
+</a>
+<a href="">
+    <img src="/public/readme/dark.png" width=300 />
+</a>
 
 ### Mobile-friendly interface
 
 **Wardi** is built with mobile and responsiveness in mind, therefore it can adapt to different devices and screen sizes.
 
-<img src="/public/readme/mobile.png" width=300 />
+<img src="/public/readme/mobile.png" width=250 />
