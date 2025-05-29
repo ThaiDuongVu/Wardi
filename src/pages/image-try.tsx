@@ -37,7 +37,10 @@ const ImageTry = () => {
   // Shop URL
   const [shopURL, setShopURL] = useState("");
   const importFromShop = () => {
-    if (shopURL.length === 0) return;
+    if (shopURL.length === 0) {
+      showToast(bootstrap, "shopErrorToast");
+      return;
+    }
 
     axios.get(`https://api.cors.lol/?url=${shopURL}`, {
       method: "GET",
@@ -216,6 +219,13 @@ const ImageTry = () => {
               {/* Base image display */}
               <div className="m-2 text-center">
                 <Image src={baseImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                {
+                  baseImageURL === "/man.jpg"
+                    ?
+                    <p className="text-body-tertiary">Image provided by zaid mohammed via Pexels</p>
+                    :
+                    <div></div>
+                }
               </div>
 
               {/* Outfit image uploader */}
@@ -254,7 +264,7 @@ const ImageTry = () => {
                   className="btn btn-secondary"
                   onClick={() => importFromShop()}
                   data-bs-toggle="tooltip"
-                  data-bs-title="Supported shops: Amazon, Ebay, Etsy, Hottopic"
+                  data-bs-title="Supported shops: Amazon, Ebay, Etsy, HotTopic"
                   data-bs-placement="right"
                 >Import from shop <i className="bi bi-bag-fill"></i></button>
               </div>
@@ -262,6 +272,13 @@ const ImageTry = () => {
               {/* Outfit image display */}
               <div className="m-2 text-center">
                 <Image src={outfitImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                {
+                  outfitImageURL === "/shirt.jpg"
+                    ?
+                    <p className="text-body-tertiary">Image provided by Anna Nekrashevich via Pexels</p>
+                    :
+                    <div></div>
+                }
               </div>
 
               {/* Submit */}

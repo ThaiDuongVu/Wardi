@@ -136,6 +136,13 @@ const TextTry = () => {
               {/* Base image display */}
               <div className="m-2 text-center">
                 <Image src={baseImageURL} width={100} height={100} unoptimized={true} className="img-thumbnail rounded display-img" alt="baseImage" />
+                {
+                  baseImageURL === "/man.jpg"
+                    ?
+                    <p className="text-body-tertiary">Image provided by zaid mohammed via Pexels</p>
+                    :
+                    <div></div>
+                }
               </div>
 
               {/* Prompts */}
