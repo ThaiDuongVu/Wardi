@@ -18,11 +18,15 @@ The user describes the clothing item using words.
 
 ### Text-based demo
 
+https://github.com/user-attachments/assets/e3e1d632-c490-4d27-91ad-3fd307ff7c59
+
 ## Image-based try-on
 
 The user uploads an image of the clothing item.
 
 ### Image-based demo
+
+https://github.com/user-attachments/assets/4b1567d6-5813-4add-aa99-a20d3578872d
 
 ## Import from shop URL
 
