@@ -28,6 +28,7 @@ const Home = () => {
               <li><Link href="/image-try">Image-based try-on</Link> <i className="bi bi-search-heart-fill m-1"></i></li>
               <li>Import from shop link <i className="bi bi-bag-heart-fill m-1"></i></li>
               <li>No signups/logins needed</li>
+              <li>Mobile-friendly interface</li>
             </ul>
 
             <p>Here&apos;s a quick guide on how to use Wardi:</p>
