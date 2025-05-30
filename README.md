@@ -21,7 +21,7 @@ See how these features function below.
 
 ## Text-based try-on
 
-The user describes the clothing item using words.
+Users can describe the clothing item they'd wish to try on using words.
 
 ### Text-based demo
 
@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/e3e1d632-c490-4d27-91ad-3fd307ff7c59
 
 ## Image-based try-on
 
-The user uploads an image of the clothing item.
+Users can upload an image of the clothing item they'd wish to try on.
 
 ### Image-based demo
 
@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/4b1567d6-5813-4add-aa99-a20d3578872d
 
 ## Import from shop URL
 
-The user imports the clothing item from a retail link (e.g., Amazon, Ebay).
+Users can import the clothing item they'd wish to try on from a retail link (e.g., Amazon, Ebay).
 
 ### Shop import demo
 
@@ -60,6 +60,6 @@ Styling in **Wardi** is provided by Bootstrap. By default, the site is shown in 
 
 ### Mobile-friendly interface
 
-**Wardi** is built with mobile and responsiveness in mind, therefore it can adapt to different devices and screen sizes.
+**Wardi** is built with mobile interfaces and responsiveness in mind, therefore it can adapt to different devices and screen sizes.
 
 <img src="/public/readme/mobile.png" width=250 />
