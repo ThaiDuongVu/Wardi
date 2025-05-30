@@ -2,6 +2,13 @@
 
 **Wardi** is a virtual wardrobe that allows users to try-on different clothing using AI. [Hosted on Netlify.](https://wwwardi.netlify.app/)
 
+<a href="">
+    <img src="/public/readme/before.jpg" width=250 />
+</a>
+<a href="">
+    <img src="/public/readme/after.jpg" width=250 />
+</a>
+
 **Wardi** offers the following features:
 
 - Text-based try-on.
