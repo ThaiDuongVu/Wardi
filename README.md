@@ -42,6 +42,8 @@ Users can import the clothing item they'd wish to try on from a retail link (e.g
 
 ### Shop import demo
 
+https://github.com/user-attachments/assets/317b651f-7894-4306-97d4-8aa59c065b09
+
 ## Other features
 
 ### Local data storage
