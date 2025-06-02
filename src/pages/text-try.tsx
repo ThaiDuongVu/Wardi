@@ -13,7 +13,9 @@ const TextTry = () => {
     /* eslint-disable */
     bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
   });
-  const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+  console.log(apiKey);
+  const ai = new GoogleGenAI({ apiKey: apiKey });
 
   // Input image
   const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");
