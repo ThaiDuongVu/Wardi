@@ -1,6 +1,7 @@
 # <img src="/public/icon2.png" width=60/>ardi
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a113da01-a86c-49bb-9b95-56bff435d359/deploy-status)](https://app.netlify.com/projects/wwwardi/deploys)
 
-**Wardi** is a virtual wardrobe that allows users to try-on different clothing using AI. [Hosted on Netlify.](https://wwwardi.netlify.app/)
+**Wardi** is a virtual wardrobe that allows users to try-on different clothing using AI. [Try it right here.](https://wwwardi.netlify.app/)
 
 <a href="">
     <img src="/public/readme/before.jpg" width=250 />
@@ -45,7 +46,7 @@ Users can import the clothing item they'd wish to try on from a retail link (e.g
 
 ### Local data storage
 
-All data are stored locally without the user's need to provide their information. Data storage uses the browser's `localStorage` feature, which means these data will be wiped if the browser's data is cleared.
+All data are stored locally without the user's need to sign up, log in, or provide their information to a server. Data storage uses the browser's `localStorage` feature, which means these data will be wiped if the browser's data is cleared.
 
 ### Dark mode
 

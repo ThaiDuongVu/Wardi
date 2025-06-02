@@ -18,7 +18,7 @@ export const fileToBase64 = (file?: File) => new Promise((resolve, reject) => {
 /* eslint-disable */
 export const initTooltip = (bootstrap: any) => {
   const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 }
 
 /* eslint-disable */

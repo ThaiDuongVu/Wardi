@@ -170,8 +170,8 @@ const ImageTry = () => {
     if (data.length == 0) return;
 
     // Save to local storage
-    const savedWardrobe = localStorage.getItem("wardrobe") ?? "";
-    localStorage.setItem("wardrobe", `${savedWardrobe};${data}`);
+    const savedWardrobe = localStorage.getItem("wardi_ardrobe") ?? "";
+    localStorage.setItem("wardi_wardrobe", `${savedWardrobe};${data}`);
 
     // Show message
     showToast(bootstrap, "addToast");
@@ -210,8 +210,11 @@ const ImageTry = () => {
                   type="button"
                   className="btn btn-secondary"
                   onClick={() => {
-                    const data = localStorage.getItem("profile");
-                    if (!data) return;
+                    const data = localStorage.getItem("wardi_profile");
+                    if (!data) {
+                      showToast(bootstrap, "noProfileToast");
+                      return;
+                    }
                     setBaseImageURL(`data:image/jpeg;base64,${data}`);
                   }}>Use profile <i className="bi bi-person-circle"></i></button>
               </div>
@@ -326,6 +329,7 @@ const ImageTry = () => {
 
       <Toast id="noImageToast" header="Error" message="Please upload a base image!" isError={true} />
       <Toast id="noOutfitToast" header="Error" message="Please upload an outfit image!" isError={true} />
+      <Toast id="noProfileToast" header="Error" message="No profile image set!" isError={true} />
       <Toast id="shopErrorToast" header="Error" message="Shop URL not supported!" isError={true} />
       <Toast id="outfitToast" header="Imported" message="Outfit imported from shop!" />
       <Toast id="addToast" header="Added" message="Item added to wardrobe!" />

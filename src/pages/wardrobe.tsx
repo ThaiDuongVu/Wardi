@@ -25,7 +25,7 @@ const Wardrobe = () => {
   // Get saved images from local storage
   const getWardrobe = () => {
     setWardrobe([]);
-    const images = localStorage.getItem("wardrobe")?.split(";") ?? [];
+    const images = localStorage.getItem("wardi_wardrobe")?.split(";") ?? [];
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       if (image.length == 0) continue;
@@ -41,7 +41,7 @@ const Wardrobe = () => {
       newItem += image;
       newItem += ";";
     });
-    localStorage.setItem("wardrobe", newItem);
+    localStorage.setItem("wardi_wardrobe", newItem);
     // Refresh wardrobe
     getWardrobe();
 

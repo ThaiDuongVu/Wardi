@@ -27,7 +27,7 @@ const Profile = () => {
   const [init, setInit] = useState(false);
   useEffect(() => {
     if (init) return;
-    const data = localStorage.getItem("profile");
+    const data = localStorage.getItem("wardi_profile");
     if (data) setProfileImageURL(`data:image/jpeg;base64,${data}`);
     setInit(true);
   }, [init]);
@@ -41,8 +41,8 @@ const Profile = () => {
 
     // Save to local storage
     const profileImageData = await fileToBase64(profileImageFile);
-    localStorage.removeItem("profile");
-    localStorage.setItem("profile", profileImageData as string);
+    localStorage.removeItem("wardi_profile");
+    localStorage.setItem("wardi_profile", profileImageData as string);
 
     // Show message
     showToast(bootstrap, "saveToast");
@@ -51,7 +51,7 @@ const Profile = () => {
   // Remove profile image
   const remove = () => {
     // Remove from local storage
-    localStorage.removeItem("profile");
+    localStorage.removeItem("wardi_profile");
     setProfileImageURL("/placeholder.png");
 
     // Show message
@@ -60,7 +60,7 @@ const Profile = () => {
 
   return (
     <RootLayout>
-      <NavBar activePage="profile" />
+      <NavBar activePage="wardi_profile" />
       <br />
       <div className="container root-content">
         <div className="row">
