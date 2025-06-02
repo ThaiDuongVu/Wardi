@@ -24,7 +24,6 @@ module.exports = {
   // Environment variables
   env: {
     email: "vu.t.duong01@gmail.com",
-    apiKey: "AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU",
     model: "gemini-2.0-flash-exp-image-generation"
   },
 }

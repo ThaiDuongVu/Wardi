@@ -1,5 +1,4 @@
 Model name: gemini-2.0-flash-exp-image-generation
-Gemini API Key: AIzaSyBJeDsnPiPmQPKMe8KqnGyBj351U1gssGU
 Theme: https://bootswatch.com/zephyr/
 CORS proxies:
  https://cors.lol/
