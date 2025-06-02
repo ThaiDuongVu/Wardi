@@ -14,6 +14,7 @@ const TextTry = () => {
     bootstrap = require("bootstrap/dist/js/bootstrap.bundle.js");
   });
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  console.log(process.env.GEMINI_API_KEY);
 
   // Input image
   const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");

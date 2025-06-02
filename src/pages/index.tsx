@@ -11,7 +11,7 @@ const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     setIsMobile(window.matchMedia("(max-width: 767px)").matches);
-  });
+  }, []);
 
   return (
     <RootLayout>
