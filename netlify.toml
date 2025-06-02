@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "NEXT_PUBLIC_GEMINI_API_KEY=$GEMINI_API_KEY npm run build"
   publish = ".next"
 
 [[headers]]
