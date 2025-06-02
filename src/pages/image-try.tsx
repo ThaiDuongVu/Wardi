@@ -17,7 +17,7 @@ const ImageTry = () => {
     initTooltip(bootstrap);
   });
 
-  const ai = new GoogleGenAI({ apiKey: process.env.apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   // Input image
   const [baseImageURL, setBaseImageURL] = useState("/placeholder.png");
